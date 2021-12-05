@@ -20,9 +20,7 @@ attempts = 10
 
 
 def start():
-
     global attempts, won
-
     if len(guessed) == len(word):
         print('')
         print('YOU WON')
@@ -38,7 +36,6 @@ def start():
         start()
 
 def createword():
-
     global won
     x = 0
     for i in word:
@@ -52,13 +49,14 @@ def createword():
 
 
 def getletter():
-
+    global word
     global attempts
     if attempts != 0:
         letter = input('enter letter ')
-        if letter in valid:
+        if letter.isalpha() and len(letter)>=1:
             if letter in word:
                 print('Well Guessed')
+                word = random.choice(words)
                 guessed.append(letter)
 
             else:
